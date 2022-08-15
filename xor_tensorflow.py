@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ##
 # Copyright (с) Ildar Bikmamatov 2022
 # License: MIT
-# Source:
+# Source: https://github.com/bayrell-tutorials/perceptron-xor
+# Link:
 # https://blog.bayrell.org/ru/iskusstvennyj-intellekt/411-obuchenie-mnogoslojnogo-perseptrona-operaczii-xor.html
 ##
 
