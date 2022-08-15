@@ -14,8 +14,8 @@ from torchsummary import summary
 
 
 # Detect device for tensor
-tensor_device = torch.device('cpu') 
-#tensor_device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')  
+#tensor_device = torch.device('cpu') 
+tensor_device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')  
 
 
 # Step 1. Prepare DataSet
@@ -101,6 +101,9 @@ for i in range(epochs):
 	# Debug output
 	if i % 10 == 0:
 		print (f"{i+1},\t loss: {loss_value_item}")
+	
+	if torch.cuda.is_available():
+		torch.cuda.empty_cache()
 	
 	
 # Show history
