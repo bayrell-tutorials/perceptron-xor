@@ -80,7 +80,7 @@ plt.plot( np.multiply(history.history['loss'], 100), label='Error')
 plt.ylabel('%')
 plt.xlabel('Epochs')
 plt.legend()
-plt.savefig('xor_tensorflow_model.png')
+plt.savefig('xor_tensorflow.png')
 plt.show()
 
 

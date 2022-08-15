@@ -8,7 +8,7 @@
 # https://blog.bayrell.org/ru/iskusstvennyj-intellekt/411-obuchenie-mnogoslojnogo-perseptrona-operaczii-xor.html
 ##
 
-import torch
+import torch, os, sys
 from torch import nn
 from torchsummary import summary
 
@@ -27,21 +27,28 @@ data_train = [
 ]
 
 
-# Convert to question and answer DataSet
-tensor_train_x = torch.tensor( list(map(lambda item: item["in"], data_train)) )
-tensor_train_y = torch.tensor( list(map(lambda item: item["out"], data_train)) )
+# Convert to question and answer
+tensor_train_x = list(map(lambda item: item["in"], data_train))
+tensor_train_y = list(map(lambda item: item["out"], data_train))
 
-tensor_train_x = tensor_train_x.to(torch.float32).to(tensor_device)
-tensor_train_y = tensor_train_y.to(torch.float32).to(tensor_device)
+# Convert to tensor
+tensor_train_x = torch.tensor(tensor_train_x).to(torch.float32).to(tensor_device)
+tensor_train_y = torch.tensor(tensor_train_y).to(torch.float32).to(tensor_device)
 
-#print (tensor_train_x.shape)
-#print (tensor_train_y.shape)
+print ("Input:")
+print (tensor_train_x)
+print ("Shape:", tensor_train_x.shape)
+print ("")
+print ("Answers:")
+print (tensor_train_y)
+print ("Shape:", tensor_train_y.shape)
+
+
+# Step 2. Create model
 
 input_shape = 2
 output_shape = 1
 
-
-# Step 2. Create model
 model = nn.Sequential(
 	nn.Linear(input_shape, 16),
 	nn.ReLU(),
@@ -112,6 +119,7 @@ import matplotlib.pyplot as plt
 
 plt.plot(history)
 plt.title('Loss')
+plt.savefig('xor_torch.png')
 plt.show()
 
 
